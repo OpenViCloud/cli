@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"runtime/debug"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -26,6 +28,23 @@ import (
 
 // version is set at build time: -ldflags "-X main.version=<semver>".
 var version = "dev"
+
+// buildVersion is the linked version of a release build. A `go install …@vX.Y.Z` has no -ldflags, but Go records the
+// module version it fetched; a build from a checkout records "(devel)" and stays "dev".
+func buildVersion(linked string, readBuildInfo func() (*debug.BuildInfo, bool)) string {
+	if linked != "dev" {
+		return linked
+	}
+	info, ok := readBuildInfo()
+	if !ok {
+		return linked
+	}
+	module := info.Main.Version
+	if module == "" || module == "(devel)" {
+		return linked
+	}
+	return strings.TrimPrefix(module, "v")
+}
 
 func newRootCommand(deps *command.Deps) *cobra.Command {
 	root := command.NewRoot(deps)
@@ -64,7 +83,7 @@ func main() {
 		},
 		Printer:     &output.Printer{Out: os.Stdout, Err: os.Stderr},
 		HTTP:        httpClient,
-		Version:     version,
+		Version:     buildVersion(version, debug.ReadBuildInfo),
 		OpenBrowser: command.OpenBrowser,
 		Stdin:       os.Stdin,
 		Executable:  os.Executable,

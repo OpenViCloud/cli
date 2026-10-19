@@ -3,12 +3,28 @@
 Manage the resources of your OpenViCloud tenant from a terminal: sign in on the web, create and control VMs, open an
 SSH session to a VM that has no public address.
 
-> No release yet. Until the first one, build it from source (below) or install it from the
-> [CLI guide](https://site-staging.openvicloud.com/docs/guides/cli/).
+## Install
 
-## Build from source
+Download the binary for your machine from the [latest release](https://github.com/OpenViCloud/cli/releases/latest)
+(`openvicloud-<linux|darwin|windows>-<amd64|arm64>`), check it, and put it on your `PATH`:
 
-Go 1.25 or newer:
+```sh
+curl -fsSLO https://github.com/OpenViCloud/cli/releases/latest/download/openvicloud-linux-amd64
+curl -fsSLO https://github.com/OpenViCloud/cli/releases/latest/download/SHA256SUMS
+sha256sum --ignore-missing -c SHA256SUMS      # macOS: shasum -a 256 --ignore-missing -c SHA256SUMS
+chmod +x openvicloud-linux-amd64 && mv openvicloud-linux-amd64 ~/.local/bin/openvicloud
+```
+
+`SHA256SUMS` is signed by the OpenViCloud release key
+(`BB74 B8EC F2BA A232 1296  E3BA 6200 9A5A 7C77 9F46`, [openvicloud-release.asc](openvicloud-release.asc)):
+
+```sh
+curl -fsSLO https://github.com/OpenViCloud/cli/releases/latest/download/SHA256SUMS.sig
+gpg --import openvicloud-release.asc
+gpg --verify SHA256SUMS.sig SHA256SUMS
+```
+
+Or build it with Go 1.25 or newer:
 
 ```sh
 go install github.com/OpenViCloud/cli/cmd/openvicloud@latest
@@ -55,8 +71,9 @@ take a newer contract:
 scripts/sync-spec.sh <titan commit, tag or branch>
 ```
 
-CI fails when the committed client does not match the committed spec. The design rules of the CLI live in titan's
-[docs/features/cli](https://github.com/OpenViCloud/titan/blob/main/docs/features/cli/design.md).
+CI fails when the committed client does not match the committed spec. A tag `vX.Y.Z` publishes a release
+(`.github/workflows/release.yml`, `.goreleaser.yaml`) once a maintainer approves the `release` environment. The
+design rules of the CLI live in titan's [docs/features/cli](https://github.com/OpenViCloud/titan/blob/main/docs/features/cli/design.md).
 
 ## License
 
