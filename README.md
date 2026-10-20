@@ -64,11 +64,12 @@ go build -o openvicloud ./cmd/openvicloud
 ```
 
 `api/client.gen.go` is generated from `api/openapi-v1.json`, a copy of the public API contract kept in
-[OpenViCloud/titan](https://github.com/OpenViCloud/titan); `api/SOURCE` names the titan commit it was copied from. To
+[OpenViCloud/control-plane](https://github.com/OpenViCloud/control-plane); `api/SOURCE` names the control-plane commit it
+was copied from. To
 take a newer contract:
 
 ```sh
-scripts/sync-spec.sh <titan commit, tag or branch>
+scripts/sync-spec.sh <control-plane commit, tag or branch>
 ```
 
 CI fails when the committed client does not match the committed spec. A tag `vX.Y.Z` publishes a release
