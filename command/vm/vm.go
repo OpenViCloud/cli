@@ -2,7 +2,7 @@
 // ProxyCommand.
 //
 // A VM has no public address: ssh reaches it through a websocket to the control plane, which runs nc to port 22
-// inside the guest (https://github.com/OpenViCloud/titan/blob/main/docs/features/vm/design.md#ssh-session). `vm ssh` starts the system ssh with that tunnel; the
+// inside the guest (https://github.com/OpenViCloud/titan-ops/blob/main/docs/features/vm/design.md#ssh-session). `vm ssh` starts the system ssh with that tunnel; the
 // customer's key and known_hosts stay ssh's business.
 package vm
 
@@ -21,9 +21,9 @@ import (
 	"github.com/coder/websocket"
 	"github.com/spf13/cobra"
 
-	"github.com/OpenViCloud/cli/api"
-	"github.com/OpenViCloud/cli/command"
-	"github.com/OpenViCloud/cli/output"
+	"github.com/OpenViCloud/titan-cli/api"
+	"github.com/OpenViCloud/titan-cli/command"
+	"github.com/OpenViCloud/titan-cli/output"
 )
 
 // The control plane sends up to 64 KiB per message; the library's default limit is 32 KiB.
