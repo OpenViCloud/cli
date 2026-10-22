@@ -3,7 +3,7 @@ package command
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/OpenViCloud/cli/output"
+	"github.com/OpenViCloud/titan-cli/output"
 )
 
 type versionInfo struct {

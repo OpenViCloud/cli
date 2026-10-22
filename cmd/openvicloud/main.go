@@ -15,15 +15,15 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/OpenViCloud/cli/command"
-	"github.com/OpenViCloud/cli/command/auth"
-	"github.com/OpenViCloud/cli/command/catalog"
-	"github.com/OpenViCloud/cli/command/sshkey"
-	"github.com/OpenViCloud/cli/command/tenant"
-	"github.com/OpenViCloud/cli/command/vm"
-	"github.com/OpenViCloud/cli/output"
-	"github.com/OpenViCloud/cli/session"
-	"github.com/OpenViCloud/cli/wait"
+	"github.com/OpenViCloud/titan-cli/command"
+	"github.com/OpenViCloud/titan-cli/command/auth"
+	"github.com/OpenViCloud/titan-cli/command/catalog"
+	"github.com/OpenViCloud/titan-cli/command/sshkey"
+	"github.com/OpenViCloud/titan-cli/command/tenant"
+	"github.com/OpenViCloud/titan-cli/command/vm"
+	"github.com/OpenViCloud/titan-cli/output"
+	"github.com/OpenViCloud/titan-cli/session"
+	"github.com/OpenViCloud/titan-cli/wait"
 )
 
 // version is set at build time: -ldflags "-X main.version=<semver>".

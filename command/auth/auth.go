@@ -7,9 +7,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/OpenViCloud/cli/command"
-	"github.com/OpenViCloud/cli/output"
-	"github.com/OpenViCloud/cli/session"
+	"github.com/OpenViCloud/titan-cli/command"
+	"github.com/OpenViCloud/titan-cli/output"
+	"github.com/OpenViCloud/titan-cli/session"
 )
 
 func New(deps *command.Deps) *cobra.Command {

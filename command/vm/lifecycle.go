@@ -9,25 +9,25 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/OpenViCloud/cli/api"
-	"github.com/OpenViCloud/cli/command"
-	"github.com/OpenViCloud/cli/command/catalog"
-	"github.com/OpenViCloud/cli/command/sshkey"
-	"github.com/OpenViCloud/cli/output"
-	"github.com/OpenViCloud/cli/wait"
+	"github.com/OpenViCloud/titan-cli/api"
+	"github.com/OpenViCloud/titan-cli/command"
+	"github.com/OpenViCloud/titan-cli/command/catalog"
+	"github.com/OpenViCloud/titan-cli/command/sshkey"
+	"github.com/OpenViCloud/titan-cli/output"
+	"github.com/OpenViCloud/titan-cli/wait"
 )
 
 const (
 	pollInterval   = 5 * time.Second
 	defaultTimeout = 10 * time.Minute
 	// A create whose answer was lost (no answer, 502/503/504) is sent again with the same Idempotency-Key, so the
-	// server makes one VM however many times it arrives (https://github.com/OpenViCloud/titan/blob/main/docs/architecture/http-contract.md#idempotency-key).
+	// server makes one VM however many times it arrives (https://github.com/OpenViCloud/titan-ops/blob/main/docs/architecture/http-contract.md#idempotency-key).
 	createAttempts = 3
 	retryPause     = 2 * time.Second
 )
 
 // goal is what a request ends in: once the VM has no request waiting (transition is null), reached says whether it
-// got there (https://github.com/OpenViCloud/titan/blob/main/docs/features/cli/design.md#vm-wait).
+// got there (https://github.com/OpenViCloud/titan-ops/blob/main/docs/features/cli/design.md#vm-wait).
 type goal struct {
 	want    string
 	reached func(vm *api.VmQueryResult) bool

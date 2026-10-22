@@ -16,11 +16,11 @@ import (
 
 	"github.com/coder/websocket"
 
-	"github.com/OpenViCloud/cli/command"
-	"github.com/OpenViCloud/cli/command/vm"
-	"github.com/OpenViCloud/cli/output"
-	"github.com/OpenViCloud/cli/session"
-	"github.com/OpenViCloud/cli/wait"
+	"github.com/OpenViCloud/titan-cli/command"
+	"github.com/OpenViCloud/titan-cli/command/vm"
+	"github.com/OpenViCloud/titan-cli/output"
+	"github.com/OpenViCloud/titan-cli/session"
+	"github.com/OpenViCloud/titan-cli/wait"
 )
 
 // The acceptance suite of the CLI: each test runs the command tree main.go builds against a fake Keycloak

@@ -1,5 +1,5 @@
 // Package sshkey is `openvicloud ssh-key`: the public keys of the tenant, picked when a VM is created
-// (https://github.com/OpenViCloud/titan/blob/main/docs/features/vm/design.md#ssh-key).
+// (https://github.com/OpenViCloud/titan-ops/blob/main/docs/features/vm/design.md#ssh-key).
 package sshkey
 
 import (
@@ -11,9 +11,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/OpenViCloud/cli/api"
-	"github.com/OpenViCloud/cli/command"
-	"github.com/OpenViCloud/cli/output"
+	"github.com/OpenViCloud/titan-cli/api"
+	"github.com/OpenViCloud/titan-cli/command"
+	"github.com/OpenViCloud/titan-cli/output"
 )
 
 func New(deps *command.Deps) *cobra.Command {

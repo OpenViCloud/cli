@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/OpenViCloud/cli/api"
+	"github.com/OpenViCloud/titan-cli/api"
 )
 
 // knownCodes are the error codes the CLI explains in its own words. Any other code still reaches the user

@@ -1,4 +1,4 @@
-module github.com/OpenViCloud/cli
+module github.com/OpenViCloud/titan-cli
 
 go 1.25.11
 
